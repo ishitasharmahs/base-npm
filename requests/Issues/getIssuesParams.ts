@@ -6,8 +6,9 @@ import {
   AssigneeEmailLogicalConditions,
   LogicalConditionsRatings,
   LogicalConditionsWithoutOr,
-} from "../utils/utils";
-export interface GetIssuesQuery {
+} from "../../utils/utils";
+
+export interface GetIssuesParams {
   "app-ids"?: string[];
   tags?: LogicalConditions;
   /** @format int64 */

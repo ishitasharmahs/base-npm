@@ -222,3 +222,141 @@ export interface StateData {
   /** @format int64 */
   changed_at: number;
 }
+/////////////////////////////////////////////////////////////////////////////
+
+export type EditIssueCustomFields = any;
+
+export interface BulkEditIssuesResponseEditInfo {
+  "message-body"?: string;
+  status?: string;
+  assignee?: string;
+  "assignee-id"?: string;
+  tags?: BulkEditIssuesResponseEditInfoTags | string[];
+  custom_fields?: CustomFields;
+}
+
+export type BulkEditIssuesResponseEditInfoTags = Record<string, string[]>;
+
+export interface EditIssueResponseUpdatedData {
+  status?: string;
+  assignee?: string;
+  title?: string;
+  tags?: string[];
+  custom_fields?: CustomFields;
+  queue_id?: string;
+}
+
+export interface Attachment {
+  /** @format int64 */
+  size?: number;
+  content_type?: string;
+  file_name?: string;
+  url?: string;
+}
+
+export interface AddMessageResponseAddedMessage {
+  body: string;
+  type: string;
+  attachment?: Attachment;
+  attachments?: Attachment[];
+}
+
+export interface RedactionRequest {
+  redaction_type: "message" | "issue" | "user" | "attachment" | "title";
+  property:
+    | "email"
+    | "issue_id"
+    | "hs_user_id"
+    | "external_user_id"
+    | "attachment_id"
+    | "message_id";
+  value: string;
+  app_publish_id: string;
+  external_redaction_id?: string;
+  author?: string;
+}
+
+export interface RedactionRequest {
+  redaction_type: "message" | "issue" | "user" | "attachment" | "title";
+  property:
+    | "email"
+    | "issue_id"
+    | "hs_user_id"
+    | "external_user_id"
+    | "attachment_id"
+    | "message_id";
+  value: string;
+  app_publish_id: string;
+  external_redaction_id?: string;
+  author?: string;
+}
+
+export interface RedactionResponse {
+  redaction_id?: string;
+  success: boolean;
+  external_redaction_id?: string;
+  reason?: string;
+  eta?: string;
+}
+
+export interface Profile {
+  role: string;
+  email: string;
+  availability?: AgentAvailability | null;
+  /** @format int64 */
+  last_login_at?: number;
+  name: string;
+  nickname?: string;
+  id: string;
+  avatar?: string | null;
+  groups?: GetAgentsProfilesResponseProfilesGroups[];
+  team_name: string;
+}
+
+export interface AgentAvailability {
+  status: "away" | "offline" | "available";
+  /** @format int64 */
+  since: number;
+}
+
+export interface GetAgentsProfilesResponseProfilesGroups {
+  title: string;
+  id: string;
+}
+
+export interface GetAppsResponseApp {
+  platform_ids: string[];
+  publish_id: string;
+  title: string;
+  id: string;
+  logo?: string | null;
+  sections: Section[];
+  platforms: Platforms[];
+}
+
+export interface Section {
+  translations: GetAppsResponseAppsSectionsTranslations;
+  /** @format int64 */
+  created_at: number;
+  id: string;
+  title: string;
+  image?: string;
+  icon?: string;
+  app_id: string;
+  faq_ids: string[];
+}
+
+export interface Platforms {
+  id: string;
+  type: string;
+  app_id: string;
+}
+
+export type GetAppsResponseAppsSectionsTranslations = Record<
+  string,
+  GetAppsResponseAppsSectionsTranslationsKeyword216
+>;
+
+export interface GetAppsResponseAppsSectionsTranslationsKeyword216 {
+  title: string;
+}

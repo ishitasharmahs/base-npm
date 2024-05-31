@@ -1,12 +1,13 @@
-import { Issue } from "../utils/utils";
-export interface GetIssuesResponse {
+import { Profile } from "../../utils/utils";
+
+export interface GetAgentsProfilesResponse {
   /** @format int64 */
   page: number;
   /** @format int64 */
   "page-size": number;
-  issues: Issue[];
+  profiles: Profile[];
   /** @format int64 */
-  "total-hits": number;
+  "total-profiles": number;
   /** @format int64 */
   "total-pages": number;
 }
